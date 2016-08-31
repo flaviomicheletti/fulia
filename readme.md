@@ -33,6 +33,8 @@ Execute os testes
     cd /fulia
     phpunit tests/
 
+Aconselho a executar `dados/trucate-posts.sql` antes de inicar os testes.
+
 ## Demo
 
 http://www.fulia.devfuria.com.br/
