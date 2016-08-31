@@ -1,32 +1,23 @@
-Protótipo experimental
-===
+# Software Fulia
+
+A uns anos atrás eu queri ter uma área administrativa para o meu site. Como ele era bem pequeno eu resolvi
+reinvetar a roda, só para não perder o costume.
+
+Imagine um blog! Agora imagine a área administrative desse blog, pronto é isso!
+
+São 2 telas apenas, a primeira uma lista dos posts...
+
+![lista dos posts]( "lista dos posts")
 
 
-Trata-se de um projeto experimental de arquitetura de aplicação web escrita principalmente em JS
+..onde é possível abrir o registro em um formulário ou deletar o registro na própria listagem.
+
+Se você resolver abrir verá a segunda tela, uma formulário web (Hooooooo)...
+
+![formulário]( "formulário")
 
 
-O conceito
----
+## Demo(níaco)
 
-Começar a  desenvolver a aplicação pelo JS e somente depois finalizar com a linguagem de servidor.
-
-
-
-Premissas
----
-
-1. Utilizar o máximo de JS e o mínimo de linguagem de servidor.
-2. A linguagem utilizada no servidor poderá ser trocada sem prejuízo da apliacação JS.
-3. A complexidade da interface (do usuário) deve ficar a cargo do JS.
-4. A segurança da aplicação deve ser observada.
-5. A codificação deve se manter extremamente simples. Um iniciante deve olhar para o código fonte
-e não encontrar dificuldades para entendê-lo.
-6. Não será utilizado nenhum framework JS.
-7. Bibliotecas estão liberadas. Ex: Jquery, Bootstrap.
-
-
-
-Demo
----
 
 http://www.fulia.devfuria.com.br/
