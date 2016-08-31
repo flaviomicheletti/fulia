@@ -11,8 +11,12 @@ class DbTest extends PHPUnit_Framework_TestCase
 
     public function testGetConexao() {
 
+        // base padrão definida no arquivo "Db.php"
         $this->assertInstanceOf("pdo", Db::getConexao());
 
-        //$this->assertInstanceOf("pdo", Db::getConexao('outra-base'));
+        //
+        // mas você poderá escolher outra base
+        //
+        // $this->assertInstanceOf("pdo", Db::getConexao('outra-base'));
     }
 }
