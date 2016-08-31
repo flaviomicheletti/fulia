@@ -14,10 +14,9 @@ São 2 telas apenas, a primeira uma lista dos posts...
 
 Se você resolver abrir verá a segunda tela, uma formulário web (Hooooooo)...
 
-![formulário]( "formulário")
+![formulário](https://github.com/flaviomicheletti/fulia/blob/releitura/segunda-tela.png "formulário")
 
 
-## Demo(níaco)
-
+## Demo
 
 http://www.fulia.devfuria.com.br/
