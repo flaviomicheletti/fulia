@@ -8,7 +8,8 @@
     private $_table_name = "posts";
     private $dbh;
 
-    function __construct() {
+    function __construct($id=null) {
+        $this->id  = $id;
         $this->dbh = Db::getConexao();
     }
 
