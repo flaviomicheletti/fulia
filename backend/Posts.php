@@ -6,12 +6,16 @@
  class Posts {
 
     private $_table_name = "posts";
+    private $dbh;
+
+    function __construct() {
+        $this->dbh = Db::getConexao();
+    }
 
     function create() {
-        $dbh = Db::getConexao();
         $sql = "INSERT INTO " . $this->_table_name . " (id, url, titulo, resumo, keywords, nivel, secao, autor, dt_atualizacao, dt_criacao, ordem) "
              . "VALUES (:_id, :_url, :_titulo, :_resumo, :_keywords, :_nivel, :_secao, :_autor, :_dt_atualizacao, :_dt_criacao, :_ordem)";
-        $sth   = $dbh->prepare($sql);
+        $sth = $this->dbh->prepare($sql);
         $sth->bindParam(":_id",             $this->id);
         $sth->bindParam(":_url",            $this->url);
         $sth->bindParam(":_titulo",         $this->titulo);
@@ -25,14 +29,13 @@
         $sth->bindParam(":_ordem",          $this->ordem);
         $sth->execute();
 
-        return $dbh->lastInsertId('id');
+        $this->id = $this->dbh->lastInsertId('id');
+        return true;
     }
 
     function read() {
-        $dbh= Db::getConexao();
         $sql = "SELECT * FROM " . $this->_table_name . " WHERE id = :id";
-
-        $sth = $dbh->prepare($sql);
+        $sth = $this->dbh->prepare($sql);
         $sth->bindParam(":id", $this->id);
         $sth->execute();
         $_obj = $sth->fetch(PDO::FETCH_OBJ);
@@ -55,13 +58,11 @@
     }
 
     function update() {
-        $dbh= Db::getConexao();
-
         $sql = "UPDATE " . $this->_table_name . " SET "
              . "id = :_id, url = :_url, titulo = :_titulo, resumo = :_resumo, keywords = :_keywords, nivel = :_nivel, "
              . "secao = :_secao, autor = :_autor, dt_atualizacao = :_dt_atualizacao, dt_criacao = :_dt_criacao, ordem = :_ordem "
              . "WHERE id = :_id";
-        $sth = $dbh->prepare($sql);
+        $sth = $this->dbh->prepare($sql);
         $sth->bindParam(":_id",             $this->id);
         $sth->bindParam(":_url",            $this->url);
         $sth->bindParam(":_titulo",         $this->titulo);
@@ -77,12 +78,9 @@
         return $sth->execute();
     }
 
-
     function delete() {
-        $dbh= Db::getConexao();
         $sql = "DELETE FROM " . $this->_table_name . " WHERE id = :id";
-
-        $sth = $dbh->prepare($sql);
+        $sth = $this->dbh->prepare($sql);
         $sth->bindParam(":id", $this->id);
         return $sth->execute();
     }

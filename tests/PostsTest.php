@@ -1,6 +1,6 @@
 <?php
 
-require "backend/Db.php";
+require_once "backend/Db.php";
 require "backend/Posts.php";
 
 class PostsTest extends PHPUnit_Framework_TestCase
@@ -22,7 +22,10 @@ class PostsTest extends PHPUnit_Framework_TestCase
         $post->dt_atualizacao = "2013-04-10";
         $post->dt_criacao     = "2013-04-10";
         $post->ordem          = 9;
-        $lastInsertId = $post->create();
+        $post->create();
+
+        $lastInsertId = $post->id;
+
 
         #
         # Read

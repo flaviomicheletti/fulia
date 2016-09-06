@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Singleton para conexão com banco de dados
  */
