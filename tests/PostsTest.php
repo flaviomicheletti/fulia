@@ -45,10 +45,11 @@ class PostsTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("Foo", $post->titulo);
 
 
-
         #
         # Update
         #
+        $post = new Posts($lastInsertId);
+        $post->read();
         $post->titulo = "New Foo";
         $this->assertTrue($post->update());
         $this->assertEquals("New Foo", $post->titulo);
@@ -57,6 +58,8 @@ class PostsTest extends PHPUnit_Framework_TestCase
         #
         # Delete
         #
+        $post = new Posts($lastInsertId);
+        $post->read();
         $this->assertTrue($post->delete());
 
     }
