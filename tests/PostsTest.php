@@ -31,15 +31,24 @@ class PostsTest extends PHPUnit_Framework_TestCase
         # Read
         #
         $post = new Posts($lastInsertId);
+
         $this->assertTrue($post->read());
         $this->assertEquals("Foo", $post->titulo);
+
+        # or...
+
+        $post = new Posts;
+        $post->id = $lastInsertId;
+        $post->read();
+
+        $this->assertTrue($post->read());
+        $this->assertEquals("Foo", $post->titulo);
+
+
 
         #
         # Update
         #
-        $post = new Posts;
-        $post->id = $lastInsertId;
-        $post->read();
         $post->titulo = "New Foo";
         $this->assertTrue($post->update());
         $this->assertEquals("New Foo", $post->titulo);
