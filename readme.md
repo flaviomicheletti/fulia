@@ -1,6 +1,6 @@
 # Software Experimental Fulia
 
-A uns anos atrás eu queri uma área administrativa para o meu site. Como ele era bem pequeno eu resolvi
+A uns anos atrás eu queria uma área administrativa para o meu site. Como ele era bem pequeno eu resolvi
 reinvetar a roda, só para não perder o costume.
 
 Imagine um blog! Agora imagine a área administrative desse blog, pronto é isso!
