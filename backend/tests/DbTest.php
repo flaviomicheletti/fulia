@@ -1,6 +1,6 @@
 <?php
 
-require "includes/Db.php";
+require __DIR__  . "/../boot.php";
 
 class DbTest extends PHPUnit_Framework_TestCase
 {

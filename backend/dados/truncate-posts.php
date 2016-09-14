@@ -1,6 +1,6 @@
 <?php
 
-require "../../backend/includes/Db.php";
+require __DIR__  . "/../boot.php";
 
 $pdo = Db::getConexao();
 $sql = "TRUNCATE posts;";

@@ -1,7 +1,6 @@
 <?php
 
-require_once "includes/Db.php";
-require "posts/Posts.php";
+require __DIR__  . "/../boot.php";
 
 class PostsTest extends PHPUnit_Framework_TestCase
 {

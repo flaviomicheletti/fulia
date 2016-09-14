@@ -1,6 +1,6 @@
 <?php
 
-require "../../backend/includes/Db.php";
+require __DIR__  . "/../boot.php";
 
 $pdo = Db::conectar();
 $pdo->query('CREATE DATABASE IF NOT EXISTS fulia;');
