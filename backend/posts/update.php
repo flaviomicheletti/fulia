@@ -6,12 +6,14 @@
 
 require __DIR__ . "/../boot.php";
 
+if ($_SERVER['REQUEST_METHOD'] === 'GET') die();
+
 $_post = isset($_POST['post']) ? $_POST['post'] : null ;
 $_post = stripslashes($_post);
 $_post = json_decode($_post);
 
 $post = new Posts($_post->id);
-$post->id            = $_post->id;
+$post->id             = $_post->id;
 $post->url            = $_post->url;
 $post->titulo         = $_post->titulo;
 $post->resumo         = $_post->resumo;
