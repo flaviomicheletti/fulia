@@ -16,24 +16,38 @@ A segunda tela um formulário web (hooooooo!!!)...
 ![formulário](https://github.com/flaviomicheletti/fulia/blob/releitura/telas/segunda-tela.png "formulário")
 
 
+
 ## Instalação
 
-Tenha o PHP e o MySql instalados e clone o projeto.
+1. Tenha o PHP e o MySql instalados
 
-Crie a base de dados executando os script's abaixo.
+2. Clone o projeto `git clone https://github.com/flaviomicheletti/fulia`.
+
+3. Crie a base de dados executando os script's abaixo.
 
     /dados/criar-db.php
     /dados/criar-tabelas.php
     /dados/criar-dados.php
 
+
+
 ## Testes
 
-Execute os testes
+Execute os testes do backend
 
-    cd /fulia
+    cd /fulia/backend
     phpunit tests/
 
+Execute os testes do frontend
+
+1. abra o seu navegador
+2. abra a URL `localhost/fulia/frontend/tests/`
+
+Sendo que `localhost` aponta para a pasta onde você clonou o projeto.
+
 Aconselho a executar `dados/trucate-posts.sql` antes de inicar os testes.
+
+
 
 ## Demo
 
