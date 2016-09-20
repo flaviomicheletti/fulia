@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') die();
 $id = isset($_POST['id']) ? $_POST['id'] : null ;
 
 $post = new Posts($id);
-$post->read();
 $post->delete();
 
 $resp = new stdClass();
