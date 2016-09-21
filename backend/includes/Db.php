@@ -30,9 +30,8 @@ abstract class Db {
             self::$pdo = new PDO("mysql:host=" . self::$local . ";", self::$usuario, self::$senha);
             self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             self::$pdo->exec("SET CHARACTER SET utf8");
-            return self::$pdo;
         }
+        return self::$pdo;
     }
-
 
 }
