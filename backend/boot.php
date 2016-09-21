@@ -11,4 +11,4 @@ require_once __DIR__  . "/includes/Db.php";
 #
 # API´s
 #
-require_once __DIR__  . "/posts/Posts.php";
+require_once __DIR__  . "/artigos/Artigo.php";
