@@ -7,7 +7,7 @@ class ArtigosSelectTest extends PHPUnit_Framework_TestCase
 
     protected $base_uri = "http://192.168.0.122/fulia";
 
-    public function testCrud() {
+    public function testRead() {
 
         $cURL = curl_init();
         curl_setopt($cURL, CURLOPT_URL, $this->base_uri .'/backend/artigos/read.php');
@@ -16,9 +16,6 @@ class ArtigosSelectTest extends PHPUnit_Framework_TestCase
         $httpCode = curl_getinfo($cURL, CURLINFO_HTTP_CODE);
 
         $this->assertEquals(200, $httpCode);
-
         curl_close($cURL);
-
     }
-
 }

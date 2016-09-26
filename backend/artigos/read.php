@@ -15,6 +15,6 @@ $artigo->read();
 
 $resp = new stdClass();
 $resp->msg = "artigo carregado com sucesso!";
-$resp->artigo_id = $artigo->id;
+$resp->artigo = $artigo;
 
 echo json_encode($resp);
