@@ -14,7 +14,7 @@ var Artigo = function(){
     };
 
     this.read = function (id, callback) {
-        if (!id) throw "artigo.read(): " + "uhuhu  como ler o artigo sem o id ?";
+        if (!id) throw "artigo.read(): " + "como ler o artigo sem o id ?";
         $.post("/fulia/backend/artigos/read.php", "id=" + id, function (data) {
             var resp = JSON.parse(data);
             console.log("artigo.read(): ", resp);
@@ -38,7 +38,7 @@ var Artigo = function(){
     };
     
     this.delete = function (id, callback) {
-        if (!id) throw "artigo.delete(): " + "uhuhu  como deletar o artigo sem o id ?";
+        if (!id) throw "artigo.delete(): " + "como deletar o artigo sem o id ?";
         $.post("/fulia/backend/artigos/delete.php", "id=" + id, function( data ) {
             var resp = JSON.parse(data);
             console.log("artigo.delete(): ", resp);
