@@ -3,17 +3,17 @@
 A uns anos atrás eu queria uma área administrativa para o meu site. Como ele era bem pequeno eu resolvi
 reinvetar a roda, só para não perder o costume.
 
-Imagine um blog! Agora imagine a área administrative desse blog, pronto é isso!
+Imagine um blog! Agora imagine a área administrativa desse blog, pronto é isso!
 
-São 2 telas apenas, a primeira uma lista dos posts...
+São 2 telas apenas, a primeira uma lista dos artigos (posts)...
 
-![lista dos posts](https://github.com/flaviomicheletti/fulia/blob/releitura/telas/primeira-tela.png "lista dos posts")
+![lista dos posts](https://github.com/flaviomicheletti/fulia/blob/releitura/telas/primeira-tela.png "lista dos artigos")
 
 ..onde é possível abrir o registro em um formulário ou deletar o registro na própria listagem.
 
-A segunda tela um formulário web (hooooooo!!!)...
+A segunda tela é um formulário web (hooooooo!!!)...
 
-![formulário](https://github.com/flaviomicheletti/fulia/blob/releitura/telas/segunda-tela.png "formulário")
+![formulário](https://github.com/flaviomicheletti/fulia/blob/releitura/telas/segunda-tela.png "formulário web")
 
 
 
@@ -43,9 +43,9 @@ Execute os testes do frontend
 1. abra o seu navegador
 2. abra a URL `localhost/fulia/frontend/tests/`
 
-Sendo que `localhost` aponta para a pasta onde você clonou o projeto.
+Sendo que `localhost` aponta para a pasta onde você "clonou" o projeto.
 
-Aconselho a executar `dados/trucate-posts.sql` antes de inicar os testes.
+Aconselho a executar `dados/trucate-posts.sql` antes de iniciar os testes.
 
 
 
