@@ -20,7 +20,7 @@ abstract class Conn {
         $local   = "localhost";
         $usuario = "root";
         $senha   = "1234";
-        $base    = "devfuria_main";
+        $base    = "fulia";
 
         if (empty(self::$conn)) {
             self::$conn = new PDO("mysql:host=$local;dbname=$base", "$usuario", "$senha", array(
