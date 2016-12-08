@@ -13,7 +13,6 @@ $objMateria = new MateriasTableModule();
 if( isset($_POST['id']) ){
     $materia = $objMateria->getObject($_POST['id']);
 }
-//var_dump($materia);die();
 ?>
 <style type="text/css">
     .input-tamanho-padrao {

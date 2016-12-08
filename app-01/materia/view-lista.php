@@ -8,7 +8,7 @@ require "../App.php";
 
 # Carregar lista de registros
 $arr_materias = MateriasTableModule::getObjects();
-//var_dump($arr_materias);die();
+
 ?>
 <button type="button" class="btn btn-primary" id="lista-btn-inserir" 
         style="margin: 10px; margin-left: 45%;">Inserir</button>

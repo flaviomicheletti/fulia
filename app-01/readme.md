@@ -1,7 +1,7 @@
 Fulia
 ======
 
-Essa é a primeira aplicação, baseado na área administrativa do site devfuria.com.br,
+Essa é a primeira aplicação, eu me base-ei na área administrativa do site devfuria.com.br,
 que eu chamava (não existe mais) de "fulia".
 
 
