@@ -1,32 +1,54 @@
-Protótipo experimental
-===
+# Software Experimental Fulia
 
+A uns anos atrás eu queria uma área administrativa para o meu site. Como ele era bem pequeno eu resolvi
+reinvetar a roda, só para não perder o costume.
 
-Trata-se de um projeto experimental de arquitetura de aplicação web escrita principalmente em JS
+Imagine um blog! Agora imagine a área administrativa desse blog, pronto é isso!
 
+São 2 telas apenas, a primeira uma lista dos artigos (posts)...
 
-O conceito
----
+![lista dos posts](https://github.com/flaviomicheletti/fulia/blob/releitura/telas/primeira-tela.png "lista dos artigos")
 
-Começar a  desenvolver a aplicação pelo JS e somente depois finalizar com a linguagem de servidor.
+..onde é possível abrir o registro em um formulário ou deletar o registro na própria listagem.
 
+A segunda tela é um formulário web (hooooooo!!!)...
 
-
-Premissas
----
-
-1. Utilizar o máximo de JS e o mínimo de linguagem de servidor.
-2. A linguagem utilizada no servidor poderá ser trocada sem prejuízo da apliacação JS.
-3. A complexidade da interface (do usuário) deve ficar a cargo do JS.
-4. A segurança da aplicação deve ser observada.
-5. A codificação deve se manter extremamente simples. Um iniciante deve olhar para o código fonte
-e não encontrar dificuldades para entendê-lo.
-6. Não será utilizado nenhum framework JS.
-7. Bibliotecas estão liberadas. Ex: Jquery, Bootstrap.
+![formulário](https://github.com/flaviomicheletti/fulia/blob/releitura/telas/segunda-tela.png "formulário web")
 
 
 
-Demo
----
+## Instalação
+
+1. Tenha o PHP e o MySql instalados
+
+2. Clone o projeto `git clone https://github.com/flaviomicheletti/fulia`.
+
+3. Crie a base de dados executando os script's abaixo.
+
+    /dados/criar-db.php
+    /dados/criar-tabelas.php
+    /dados/criar-dados.php
+
+
+
+## Testes
+
+Execute os testes do backend
+
+    cd /fulia/backend
+    phpunit tests/
+
+Execute os testes do frontend
+
+1. abra o seu navegador
+2. abra a URL `localhost/fulia/frontend/tests/`
+
+Sendo que `localhost` aponta para a pasta onde você "clonou" o projeto.
+
+Aconselho a executar `dados/trucate-posts.sql` antes de iniciar os testes.
+
+
+
+## Demo
 
 http://www.fulia.devfuria.com.br/
