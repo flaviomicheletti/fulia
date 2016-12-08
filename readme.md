@@ -7,13 +7,13 @@ Imagine um blog! Agora imagine a área administrativa desse blog, pronto é isso
 
 São 2 telas apenas, a primeira uma lista dos artigos (posts)...
 
-![lista dos posts](https://github.com/flaviomicheletti/fulia/blob/releitura/telas/primeira-tela.png "lista dos artigos")
+![lista dos posts](https://github.com/flaviomicheletti/fulia/blob/master/telas/primeira-tela.png "lista dos artigos")
 
 ..onde é possível abrir o registro em um formulário ou deletar o registro na própria listagem.
 
 A segunda tela é um formulário web (hooooooo!!!)...
 
-![formulário](https://github.com/flaviomicheletti/fulia/blob/releitura/telas/segunda-tela.png "formulário web")
+![formulário](https://github.com/flaviomicheletti/fulia/blob/master/telas/segunda-tela.png "formulário web")
 
 
 
