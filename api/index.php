@@ -19,28 +19,32 @@ $app = new \Slim\App($config);
 # Create
 #
 $app->post('/', function (ServerRequestInterface $request, ResponseInterface $response) {
-    $parsedBody = $request->getParsedBody();
-    $parsedBody['id'] = 99;
-    return $response->withJson($parsedBody);
+    $parsedBody = (object)$request->getParsedBody();
+    $artigo = new Artigo;
+    $artigo->url            = $parsedBody->_url;
+    $artigo->titulo         = $parsedBody->titulo;
+    $artigo->resumo         = $parsedBody->resumo;
+    $artigo->keywords       = $parsedBody->keywords;
+    $artigo->nivel          = $parsedBody->nivel ;
+    $artigo->secao          = $parsedBody->secao;
+    $artigo->autor          = $parsedBody->autor ;
+    $artigo->dt_atualizacao = $parsedBody->dt_atualizacao;
+    $artigo->dt_criacao     = $parsedBody->dt_criacao;
+    $artigo->ordem          = $parsedBody->ordem ;
+    if ($artigo->create()) {
+        return $response->withJson($artigo);
+    } else {
+        return $response->withJson(array('erro' => "falha ao inserir artigo"), 501);
+    }
+    
 });
 
 #
 # Read
 #
 $app->get('/{id:\d+}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
-    $artigo = new Artigo(99);
-//    $artigo->read();    
-    $artigo->id             = 99;
-    $artigo->url            = "foo/";
-    $artigo->titulo         = "Foo";
-    $artigo->resumo         = "Apenas um foo";
-    $artigo->keywords       = "foodie";
-    $artigo->nivel          = "intermediario";
-    $artigo->secao          = "php";
-    $artigo->autor          = "euzinho";
-    $artigo->dt_atualizacao = "2013-04-10";
-    $artigo->dt_criacao     = "2013-04-10";
-    $artigo->ordem          = 5;
+    $artigo = new Artigo($args['id']);
+    $artigo->read();    
     return $response->withJson($artigo);
 });
 
@@ -48,19 +52,24 @@ $app->get('/{id:\d+}', function (ServerRequestInterface $request, ResponseInterf
 # Update
 #
 $app->put('/{id:\d+}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
-    $artigo = new Artigo(99);
-    $artigo->url            = "foo/";
-    $artigo->titulo         = "Foo";
-    $artigo->resumo         = "Apenas um foo";
-    $artigo->keywords       = "foodie";
-    $artigo->nivel          = "intermediario";
-    $artigo->secao          = "php";
-    $artigo->autor          = "euzinho";
-    $artigo->dt_atualizacao = "2013-04-10";
-    $artigo->dt_criacao     = "2013-04-10";
-    $artigo->ordem          = 5;
-    //$artigo->update();    
-    return $response->withJson($artigo);
+    $parsedBody = (object)$request->getParsedBody();
+    $artigo = new Artigo();
+    $artigo->id             = $parsedBody->id;
+    $artigo->_url           = $parsedBody->_url;
+    $artigo->titulo         = $parsedBody->titulo;
+    $artigo->resumo         = $parsedBody->resumo;
+    $artigo->keywords       = $parsedBody->keywords;
+    $artigo->nivel          = $parsedBody->nivel ;
+    $artigo->secao          = $parsedBody->secao;
+    $artigo->autor          = $parsedBody->autor ;
+    $artigo->dt_atualizacao = $parsedBody->dt_atualizacao;
+    $artigo->dt_criacao     = $parsedBody->dt_criacao;
+    $artigo->ordem          = $parsedBody->ordem ;
+    if ($artigo->update()) {
+        return $response->withJson($artigo);
+    } else {
+        return $response->withJson(array('erro' => "falha ao atualizar artigo"), 501);
+    }
 });
 
 #
@@ -69,9 +78,13 @@ $app->put('/{id:\d+}', function (ServerRequestInterface $request, ResponseInterf
 $app->delete('/{id:\d+}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
     $artigo = new Artigo($args['id']);
     $artigo->delete();
-    return $response->withJson(array(
-        "msg" => "Artigo({$artigo->id}) deletado com sucesso!")
-    );
+    if ($artigo->update()) {
+        return $response->withJson(array(
+            "msg" => "Artigo({$artigo->id}) deletado com sucesso!")
+        );
+    } else {
+        return $response->withJson(array('erro' => "falha ao deletar artigo ({$artigo->id})"), 501);
+    }
 });
 
 $app->run();

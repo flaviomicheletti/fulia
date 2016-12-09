@@ -8,6 +8,7 @@ QUnit.test("crud", function (assert) {
     // create
     //
     var obj = {
+        _url:           'foo/',
         titulo:         'Foo',
         resumo:         'Apenas um foo',
         keywords:       'foodie',
@@ -39,6 +40,7 @@ QUnit.test("crud", function (assert) {
                     //
                     // update
                     //
+                    artigo.set('titulo', "mudei o titulo");
                     artigo.save({}, {
                         success: function (_model) {
                             console.log("update(save): ok!");

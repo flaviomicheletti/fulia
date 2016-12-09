@@ -45,7 +45,7 @@
             throw new Exception("resultado de artigo->read(" . $this->id . ") he igual a 'null'", 1);
         }
 
-        $this->url            = $_obj->url;
+        $this->_url           = $_obj->url;
         $this->titulo         = $_obj->titulo;
         $this->resumo         = $_obj->resumo;
         $this->keywords       = $_obj->keywords;
