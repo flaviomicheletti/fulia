@@ -1,46 +1,77 @@
 <?php
 
 require 'vendor/autoload.php';
+require __DIR__  . "/Artigo.php";
+require __DIR__  . "/Db.php";
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
-$app = new \Slim\App;
+$config = [
+    'settings' => [
+        'displayErrorDetails' => true,
+    ],
+];
+
+$app = new \Slim\App($config);
 
 #
 # Create
 #
 $app->post('/', function (ServerRequestInterface $request, ResponseInterface $response) {
-    return $response->withJson(array('create' => true));
-//    var_dump("post", $args);
-//    return $response;
+    $parsedBody = $request->getParsedBody();
+    $parsedBody['id'] = 99;
+    return $response->withJson($parsedBody);
 });
 
 #
 # Read
 #
-$app->get('/{id}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
-    return $response->withJson($args);
-//    var_dump("get", $args);
-//    return $response;
+$app->get('/{id:\d+}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
+    $artigo = new Artigo(99);
+//    $artigo->read();    
+    $artigo->id             = 99;
+    $artigo->url            = "foo/";
+    $artigo->titulo         = "Foo";
+    $artigo->resumo         = "Apenas um foo";
+    $artigo->keywords       = "foodie";
+    $artigo->nivel          = "intermediario";
+    $artigo->secao          = "php";
+    $artigo->autor          = "euzinho";
+    $artigo->dt_atualizacao = "2013-04-10";
+    $artigo->dt_criacao     = "2013-04-10";
+    $artigo->ordem          = 5;
+    return $response->withJson($artigo);
 });
 
 #
 # Update
 #
-$app->put('/{id}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
-    return $response->withJson($args);
-//    var_dump("put", $args);
-//    return $response;
+$app->put('/{id:\d+}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
+    $artigo = new Artigo(99);
+    $artigo->url            = "foo/";
+    $artigo->titulo         = "Foo";
+    $artigo->resumo         = "Apenas um foo";
+    $artigo->keywords       = "foodie";
+    $artigo->nivel          = "intermediario";
+    $artigo->secao          = "php";
+    $artigo->autor          = "euzinho";
+    $artigo->dt_atualizacao = "2013-04-10";
+    $artigo->dt_criacao     = "2013-04-10";
+    $artigo->ordem          = 5;
+    //$artigo->update();    
+    return $response->withJson($artigo);
 });
 
 #
 # Delete
 #
-$app->delete('/{id}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
-    return $response->withJson($args);
-//    var_dump("delete", $args);
-//    return $response;
+$app->delete('/{id:\d+}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
+    $artigo = new Artigo($args['id']);
+    $artigo->delete();
+    return $response->withJson(array(
+        "msg" => "Artigo({$artigo->id}) deletado com sucesso!")
+    );
 });
 
 $app->run();
