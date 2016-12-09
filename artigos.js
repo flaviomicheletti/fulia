@@ -4,7 +4,7 @@
 window.Artigo = Backbone.Model.extend({
     urlRoot: 'api/',
     sync: function (method, model, options) {
-        console.log(method + "(sync): " + JSON.stringify(model));
+        console.log(method + "(sync): ", model.attributes);
         return Backbone.sync.apply(this, arguments);
     }
 });

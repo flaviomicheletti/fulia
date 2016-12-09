@@ -7,13 +7,26 @@ QUnit.test("crud", function (assert) {
     //
     // create
     //
-    var artigo = new Artigo();
+    var obj = {
+        titulo:         'Foo',
+        resumo:         'Apenas um foo',
+        keywords:       'foodie',
+        nivel:          'intermediario',
+        secao:          'php',
+        autor:          'euzinho',
+        dt_atualizacao: '2013-04-10',
+        dt_criacao:     '2013-04-10',
+        ordem:           9
+    }
+    
+    var artigo = new Artigo(obj);
+    
+    
     artigo.save({}, {
         success: function (_model) {
             console.log("create(save): ok!");
-            // o backend deve retornar um json com id
 //            console.log(artigo.attributes);
-            artigo.set({id: 2});
+            console.log(artigo.id);
 
             //
             // read
