@@ -15,6 +15,23 @@ $config = [
 
 $app = new \Slim\App($config);
 
+
+#
+# Collections
+#
+$app->get('/artigos/', function (ServerRequestInterface $request, ResponseInterface $response) {
+
+    //
+    // Implementar o filtro
+    //
+    // $parsedBody = (object)$request->getQueryParams();
+    // var_dump($parsedBody);
+
+    $artigo = new Artigo();
+    return $response->withJson($artigo->all());
+});
+
+
 #
 # Create
 #

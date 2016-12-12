@@ -7,7 +7,7 @@ QUnit.test("crud", function (assert) {
     //
     // create
     //
-    var obj = {
+    var artigo = new Artigo({
         _url:           'foo/',
         titulo:         'Foo',
         resumo:         'Apenas um foo',
@@ -18,11 +18,7 @@ QUnit.test("crud", function (assert) {
         dt_atualizacao: '2013-04-10',
         dt_criacao:     '2013-04-10',
         ordem:           9
-    }
-
-    var artigo = new Artigo(obj);
-
-
+    });
     artigo.save({}, {
         success: function (_model) {
             console.log("create(save): ok!");
@@ -73,6 +69,23 @@ QUnit.test("crud", function (assert) {
         error: function (model, xhr, options) {
             console.log("create(save): falhou!");
         }
+    });
+
+    assert.ok(true);
+});
+QUnit.test("collection", function (assert) {
+    var artigos = new Artigos();
+    // artigos.fetch({data: artigos.query.attributes}, {
+    artigos.fetch({
+        success: function (collection, response) {
+            console.log('OK');
+            console.log(JSON.stringify(artigos.toJSON()));
+        },
+        error: function (collection, response) {
+            console.log('NEG');
+            console.log(artigos.options);
+            console.log(JSON.stringify(artigos.toJSON()));
+        },
     });
 
     assert.ok(true);
