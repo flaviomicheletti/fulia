@@ -19,15 +19,15 @@ QUnit.test("crud", function (assert) {
         dt_criacao:     '2013-04-10',
         ordem:           9
     }
-    
+
     var artigo = new Artigo(obj);
-    
-    
+
+
     artigo.save({}, {
         success: function (_model) {
             console.log("create(save): ok!");
-//            console.log(artigo.attributes);
-            console.log(artigo.id);
+            // console.log(artigo.attributes);
+            // console.log(artigo.id);
 
             //
             // read
@@ -35,7 +35,7 @@ QUnit.test("crud", function (assert) {
             artigo.fetch({
                 success: function (_model) {
                     console.log("read(fetch): ok!");
-//                    console.log(artigo.attributes);
+                    // console.log(artigo.attributes);
 
                     //
                     // update
@@ -44,12 +44,20 @@ QUnit.test("crud", function (assert) {
                     artigo.save({}, {
                         success: function (_model) {
                             console.log("update(save): ok!");
-//                            console.log(artigo.attributes);
+                            // console.log(artigo.attributes);
 
                             //
                             // delete
                             //
-                            artigo.destroy();
+                            artigo.destroy({
+                                success: function (_model) {
+                                    console.log("delete: ok!");
+                                    // console.log(artigo.attributes);
+                                },
+                                error: function (model, xhr, options) {
+                                    console.log("delete falhou!");
+                                }
+                            });
 
                         },
                         error: function (model, xhr, options) {
