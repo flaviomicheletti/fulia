@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
+require __DIR__  . '/../vendor/autoload.php';
 require __DIR__  . "/Artigo.php";
 require __DIR__  . "/Db.php";
 
@@ -36,7 +36,7 @@ $app->post('/', function (ServerRequestInterface $request, ResponseInterface $re
     } else {
         return $response->withJson(array('erro' => "falha ao inserir artigo"), 501);
     }
-    
+
 });
 
 #
@@ -44,7 +44,7 @@ $app->post('/', function (ServerRequestInterface $request, ResponseInterface $re
 #
 $app->get('/{id:\d+}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
     $artigo = new Artigo($args['id']);
-    $artigo->read();    
+    $artigo->read();
     return $response->withJson($artigo);
 });
 
