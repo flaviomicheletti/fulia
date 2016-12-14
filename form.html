@@ -28,6 +28,7 @@
         </style>
     </head>
     <body>
+        
         <div class="hero-unit">
             <div class="container">
                 <h1>(Furia e )Fulia</h1>
@@ -36,98 +37,109 @@
             </div>
         </div>        
 
-
         <div class="container">
             <div class="row">
                 <div class="span12">
-
-                    <form class="form-horizontal inverse">
-                        <div class="control-group">
-                            <label class="control-label" for="frm-titulo">Título</label>
-                            <div class="controls">
-                                <input id="frm-titulo" class="input-tamanho-padrao" value="Um bom começo" type="text">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="frm-resumo">Resumo</label>
-                            <div class="controls">
-                                <textarea rows="6" id="frm-resumo" class="input-tamanho-padrao">PHP é uma linguagem de programação para uso geral. Inicialmente, projetada por Rasmus Lerdorf na década de 1990, tinha como objetivo principal contar as visitas que eram realizadas em seu currículo on-line. Atualmente (2012) é utilizada, principalmente para construir aplicações web. Entende-se por aplicbase-dadosações web (às vezes abreviado para “webapp” ou simplesmente “app´s”) programas ou softwares escritos para rodarem na plataforma web, no modelo cliente/servidor...</textarea>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="frm-keywords">Keywords</label>
-                            <div class="controls">
-                                <textarea rows="3" id="frm-keywords" class="input-tamanho-padrao">o que é php; definição de php;</textarea>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="frm-nivel">Nível</label>
-                            <div class="controls">
-                                <select id="frm-nivel">
-
-                                    <option value=""></option>
-                                    <option value="basico" selected="selected">Básico</option>
-                                    <option value="intermediario">intermediário</option>
-                                    <option value="avancado">Avançado</option>            </select>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="frm-secao">Seção</label>
-                            <div class="controls">
-                                <select id="frm-secao">
-
-                                    <option value=""></option>
-                                    <option value="php" selected="selected">PHP</option>
-                                    <option value="js">JS</option>
-                                    <option value="html-css">HTML &amp; CSS</option>            </select>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="frm-autor">Autor</label>
-                            <div class="controls">
-                                <select id="frm-autor">
-
-                                    <option value=""></option>
-                                    <option value="flavio">Flávio</option>
-                                    <option value="alexandre" selected="selected">Alexandre</option>
-                                    <option value="micheletti">Micheletti</option>            </select>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="frm-dt-criacao">Data de criação</label>
-                            <div class="controls">
-                                <input id="frm-dt-criacao" class="span2 centralizar-texto" value="2012-06-05" type="text">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="frm-dt-atualizacao">Data de atualização</label>
-                            <div class="controls">
-                                <input id="frm-dt-atualizacao" class="span2 centralizar-texto" value="2012-09-11" type="text">
-                                <div id="datepicker"></div>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="frm-ordem">Ordem</label>
-                            <div class="controls">
-                                <input id="frm-ordem" class="span1 centralizar-texto" value="1" type="text">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <div class="controls pull-right">
-                                <button type="button" id="frm-btn-cancelar" class="btn-fulia btn">Cancelar</button>
-                                <button type="button" id="frm-btn-salvar" class="btn-fulia btn btn-info">Salvar</button>
-                            </div>
-                        </div>
-                    </form>
+                    <div id='content'></div>
                 </div>
             </div>
         </div>
 
+        <script type="text/template" id="form-template">
+        <form class="form-horizontal inverse">
+            <div class="control-group">
+                <label class="control-label" for="frm-titulo">Título</label>
+                <div class="controls">
+                    <input name="titulo" class="input-tamanho-padrao" value="<%= titulo %>" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="resumo">Resumo</label>
+                <div class="controls">
+                    <textarea rows="6" name="resumo" class="input-tamanho-padrao">PHP é uma linguagem de programação para uso geral. Inicialmente, projetada por Rasmus Lerdorf na década de 1990, tinha como objetivo principal contar as visitas que eram realizadas em seu currículo on-line. Atualmente (2012) é utilizada, principalmente para construir aplicações web. Entende-se por aplicbase-dadosações web (às vezes abreviado para “webapp” ou simplesmente “app´s”) programas ou softwares escritos para rodarem na plataforma web, no modelo cliente/servidor...</textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="keywords">Keywords</label>
+                <div class="controls">
+                    <textarea rows="3" name="keywords" class="input-tamanho-padrao">o que é php; definição de php;</textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="nivel">Nível</label>
+                <div class="controls">
+                    <select name="nivel" id='nivel'>
+                        <option value=""></option>
+                        <%
+                        var options = {
+                            'basico':        'Básico',
+                            'intermediario': 'Intermediário',
+                            'avancado':      'Avançado',
+                        }
+                        %>
+
+                        <% _.forEach(options, function (label, chave) { %>
+                            <% window.selected = (nivel == chave ) ? 'selected="selected"' : null; %>
+                            <option value="<%=chave%>" <%=selected%> ><%=label%></option>
+                        <% }); %>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="secao">Seção</label>
+                <div class="controls">
+                    <select name="secao">
+                        <option value=""></option>
+                        <option value="php">PHP</option>
+                        <option value="js">JS</option>
+                        <option value="html-css">HTML &amp; CSS</option>\n\
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="autor">Autor</label>
+                <div class="controls">
+                    <select name="autor" id='autor'>
+                        <option value=""></option>
+                        <option value="flavio">Flávio</option>
+                        <option value="alexandre">Alexandre</option>
+                        <option value="micheletti">Micheletti</option>\n\
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="dt_criacao">Data de criação</label>
+                <div class="controls">
+                    <input name="dt_criacao" class="span2 centralizar-texto" value="2012-06-05" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="dt_atualizacao">Data de atualização</label>
+                <div class="controls">
+                    <input name="dt_atualizacao" class="span2 centralizar-texto" value="2012-09-11" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="ordem">Ordem</label>
+                <div class="controls">
+                    <input name="ordem" class="span1 centralizar-texto" value="1" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls pull-right">
+                    <button type="button" id="btn-cancelar" class="btn-fulia btn">Cancelar</button>
+                    <button type="button" id="btn-salvar" class="btn-fulia btn btn-info">Salvar</button>
+                </div>
+            </div>
+        </form>
+        </script>             
+                            
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
         <script src="artigos.js"></script>
-        <script src="index.js"></script>
+        <script src="form.js"></script>
 
     </body>
 </html>
