@@ -35,7 +35,7 @@ $app->get('/artigos/', function (ServerRequestInterface $request, ResponseInterf
 #
 # Create
 #
-$app->post('/', function (ServerRequestInterface $request, ResponseInterface $response) {
+$app->post('/artigo', function (ServerRequestInterface $request, ResponseInterface $response) {
     $parsedBody = (object)$request->getParsedBody();
     $artigo = new Artigo;
     $artigo->url            = $parsedBody->_url;
@@ -59,7 +59,7 @@ $app->post('/', function (ServerRequestInterface $request, ResponseInterface $re
 #
 # Read
 #
-$app->get('/{id:\d+}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
+$app->get('/artigo/{id:\d+}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
     $artigo = new Artigo($args['id']);
     $artigo->read();
     return $response->withJson($artigo);
@@ -68,7 +68,7 @@ $app->get('/{id:\d+}', function (ServerRequestInterface $request, ResponseInterf
 #
 # Update
 #
-$app->put('/{id:\d+}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
+$app->put('/artigo/{id:\d+}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
     $parsedBody = (object)$request->getParsedBody();
     $artigo = new Artigo();
     $artigo->id             = $parsedBody->id;
@@ -92,7 +92,7 @@ $app->put('/{id:\d+}', function (ServerRequestInterface $request, ResponseInterf
 #
 # Delete
 #
-$app->delete('/{id:\d+}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
+$app->delete('/artigo/{id:\d+}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
     $artigo = new Artigo($args['id']);
     $artigo->delete();
     if ($artigo->update()) {
