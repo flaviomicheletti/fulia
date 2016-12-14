@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Fulia</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css">
+
+        <style type="text/css">
+            .input-tamanho-padrao {
+                width:97%;
+            }
+            .centralizar-texto {
+                text-align: center;
+            }
+            label {
+                background-color: #EEEEEE;
+                border-radius: 5px 5px 5px 5px;
+                line-height: 30px;
+            }
+            .form-horizontal .control-label {
+                padding-top: 0px;
+                text-align: center;
+                font-weight: 900;
+            }
+            .btn-fulia {
+                width: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="hero-unit">
+            <div class="container">
+                <h1>(Furia e )Fulia</h1>
+                <p>Projeto experimental em JavaScript</p>
+                <p><a class="btn btn-primary btn-lg" href="https://github.com/flaviomicheletti/fulia" role="button">GitHub</a></p>
+            </div>
+        </div>        
+
+
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+
+                    <form class="form-horizontal inverse">
+                        <div class="control-group">
+                            <label class="control-label" for="frm-titulo">Título</label>
+                            <div class="controls">
+                                <input id="frm-titulo" class="input-tamanho-padrao" value="Um bom começo" type="text">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="frm-resumo">Resumo</label>
+                            <div class="controls">
+                                <textarea rows="6" id="frm-resumo" class="input-tamanho-padrao">PHP é uma linguagem de programação para uso geral. Inicialmente, projetada por Rasmus Lerdorf na década de 1990, tinha como objetivo principal contar as visitas que eram realizadas em seu currículo on-line. Atualmente (2012) é utilizada, principalmente para construir aplicações web. Entende-se por aplicbase-dadosações web (às vezes abreviado para “webapp” ou simplesmente “app´s”) programas ou softwares escritos para rodarem na plataforma web, no modelo cliente/servidor...</textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="frm-keywords">Keywords</label>
+                            <div class="controls">
+                                <textarea rows="3" id="frm-keywords" class="input-tamanho-padrao">o que é php; definição de php;</textarea>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="frm-nivel">Nível</label>
+                            <div class="controls">
+                                <select id="frm-nivel">
+
+                                    <option value=""></option>
+                                    <option value="basico" selected="selected">Básico</option>
+                                    <option value="intermediario">intermediário</option>
+                                    <option value="avancado">Avançado</option>            </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="frm-secao">Seção</label>
+                            <div class="controls">
+                                <select id="frm-secao">
+
+                                    <option value=""></option>
+                                    <option value="php" selected="selected">PHP</option>
+                                    <option value="js">JS</option>
+                                    <option value="html-css">HTML &amp; CSS</option>            </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="frm-autor">Autor</label>
+                            <div class="controls">
+                                <select id="frm-autor">
+
+                                    <option value=""></option>
+                                    <option value="flavio">Flávio</option>
+                                    <option value="alexandre" selected="selected">Alexandre</option>
+                                    <option value="micheletti">Micheletti</option>            </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="frm-dt-criacao">Data de criação</label>
+                            <div class="controls">
+                                <input id="frm-dt-criacao" class="span2 centralizar-texto" value="2012-06-05" type="text">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="frm-dt-atualizacao">Data de atualização</label>
+                            <div class="controls">
+                                <input id="frm-dt-atualizacao" class="span2 centralizar-texto" value="2012-09-11" type="text">
+                                <div id="datepicker"></div>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="frm-ordem">Ordem</label>
+                            <div class="controls">
+                                <input id="frm-ordem" class="span1 centralizar-texto" value="1" type="text">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <div class="controls pull-right">
+                                <button type="button" id="frm-btn-cancelar" class="btn-fulia btn">Cancelar</button>
+                                <button type="button" id="frm-btn-salvar" class="btn-fulia btn btn-info">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
+        <script src="artigos.js"></script>
+        <script src="index.js"></script>
+
+    </body>
+</html>
