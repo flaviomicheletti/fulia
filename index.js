@@ -8,13 +8,17 @@ var AppRouter = Backbone.Router.extend({
 var app_router = new AppRouter();
 
 app_router.on('route:listar', function () {
-    window.artigos = new Artigos();
+    var artigos = new Artigos();
     artigos.fetch({
         success: function (collection, response) {
-            window.artigos_view = new ArtigosView({
+            var lista = new ArtigosTableView();
+            $('#content').html(lista.render());    
+            
+            var trs = new ArtigosTBodyView({
                 collection: artigos
             });
-            window.artigos_view.render();
+            console.log(trs.$el);
+            trs.render();
         },
         error: function (collection, response) {
             console.log('NEG');
@@ -24,7 +28,19 @@ app_router.on('route:listar', function () {
 });
 
 app_router.on('route:artigo', function () {
-    console.log('form artigo');
+    artigo = new Artigo({id: 1});
+    artigo.fetch({
+        success: function (_model) {
+            console.log("read(fetch): ok!");
+            //console.log(artigo.attributes);
+
+            formulario = new ArtigoFormView();
+            $('#content').html(formulario.render(_model));
+        },
+        error: function (model, xhr, options) {
+            console.log("read(fetch): falhou!");
+        }
+    });    
 });
 
 Backbone.history.start();
