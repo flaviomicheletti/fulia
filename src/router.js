@@ -1,5 +1,3 @@
-var App = window.App || {};
-
 App.router = Backbone.Router.extend({
     routes: {
         ''           : 'listar',
