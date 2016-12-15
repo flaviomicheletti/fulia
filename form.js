@@ -1,4 +1,4 @@
-window.artigo = new Artigo({id: 3});
+window.artigo = new Artigo({id: 1});
 
 artigo.fetch({
     success: function (_model) {
@@ -40,14 +40,5 @@ var FormularioView = Backbone.View.extend({
     },
     cancelar: function () {
         console.log('cancelar: ', this.model.id);
-    }
-});
-
-var ComboOptionsView = Backbone.View.extend({
-    render: function (name, value) {
-//        this.$el = $("#" + name);
-        this.$el = $('select[name="nivel"]');
-        console.log(this.$el);
-        this.$el.val(value);
     }
 });
