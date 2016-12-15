@@ -1,5 +1,4 @@
 window.artigos = new Artigos();
-
 artigos.fetch({
     success: function (collection, response) {
         window.artigos_view = new ArtigosView({
@@ -19,9 +18,9 @@ artigos.fetch({
 window.ArtigosView = Backbone.View.extend({
     el: $("#lista-artigos"),
     render: function () {
-        var artigos    = this.collection.models;                // models
+        var artigos = this.collection.models;                 // models
         for (var i = 0; i < artigos.length; i++) {
-            var linha_view = new ArtigoLinhaView();             // view da linha
+            var linha_view = new ArtigoLinhaView();           // view da linha
             $(this.el).append(linha_view.render(artigos[i]));
         }
         return this;

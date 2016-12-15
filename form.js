@@ -1,5 +1,4 @@
 window.artigo = new Artigo({id: 1});
-
 artigo.fetch({
     success: function (_model) {
         console.log("read(fetch): ok!");
