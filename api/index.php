@@ -1,8 +1,8 @@
 <?php
 
 require __DIR__  . '/../vendor/autoload.php';
-require __DIR__  . "/Artigo.php";
-require __DIR__  . "/Db.php";
+require __DIR__  . "/includes/Db.php";
+require __DIR__  . "/class/Artigo.php";
 
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
