@@ -184,7 +184,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone.js"></script>
         <script src="models.js"></script>
         <script src="views.js"></script>
-        <script src="index.js"></script>
+        <script src="router.js"></script>
+        <script type="text/javascript">
+            App.workspace = new App.router();
+            Backbone.history.start();
+        </script>
 
     </body>
 </html>
