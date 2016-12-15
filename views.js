@@ -1,24 +1,36 @@
 //
-// view
+// Lista de artigos (table)
 //
-window.ArtigosView = Backbone.View.extend({
-    el: $("#lista-artigos"),
+var ArtigosTableView = Backbone.View.extend({
+    template: _.template($('#tpl-lista-de-artigos').html()),
     render: function () {
-        var artigos = this.collection.models;                 // models
+        return this.$el.html(this.template());
+    }
+});
+
+//
+// Lista de artigos (body)
+//
+var ArtigosTBodyView = Backbone.View.extend({
+    render: function () {
+        this.el=  $("#tbody");
+        var artigos = this.collection.models;           // models
+        var tr = {};
+
         for (var i = 0; i < artigos.length; i++) {
-            var linha_view = new ArtigoLinhaView();           // view da linha
-            $(this.el).append(linha_view.render(artigos[i]));
+            tr = new ArtigosTrView();                   // view da linha
+            $(this.el).append(tr.render(artigos[i]));
         }
         return this;
     }
 });
 
 //
-// linha view
+// Lista de artigos (cada linha)
 //
-var ArtigoLinhaView = Backbone.View.extend({
-    tagName: 'tr',    
-    template: _.template($('#linha-artigo').html()),
+var ArtigosTrView = Backbone.View.extend({
+    tagName: 'tr',
+    template: _.template($('#tpl-cada-artigo').html()),
     render: function (model) {
         this.model = model;
         return this.$el.html(this.template(model.attributes));
@@ -34,5 +46,38 @@ var ArtigoLinhaView = Backbone.View.extend({
     deletar: function () {
         console.log('deletar: ', this.model.id);
     }
-    
+
+});
+
+//
+// Formulário
+//
+var ArtigoFormView = Backbone.View.extend({
+    template: _.template($('#tpl-form').html()),
+    render: function (model) {
+        this.model = model;
+        return this.$el.html(this.template(model.attributes));
+    },
+    events: {
+        "change form":          "change",
+        "click  #btn-salvar":   "salvar",
+        "click  #btn-cancelar": "cancelar"
+    },
+    change: function(event) {
+        var target = event.target;
+        var ctrl = {
+            name:  target.name,
+            value: target.value
+        };
+        // console.log(ctrl);
+        this.model.set(ctrl.name, ctrl.value);
+        // console.log(this.model.attributes);
+    },
+    salvar: function () {
+        console.log('salvar: ', this.model.id);
+        console.log(this.model.attributes);
+    },
+    cancelar: function () {
+        console.log('cancelar: ', this.model.id);
+    }
 });
