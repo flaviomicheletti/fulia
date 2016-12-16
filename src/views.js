@@ -18,7 +18,7 @@ App.ArtigosTBodyView = Backbone.View.extend({
         var tr = {};
 
         for (var i = 0; i < artigos.length; i++) {
-            tr = new App.ArtigosTrView();                   // view da linha
+            tr = new App.ArtigosTrView();               // view da linha
             $(this.el).append(tr.render(artigos[i]));
         }
         return this;
@@ -46,9 +46,11 @@ App.ArtigosTrView = Backbone.View.extend({
     },
     deletar: function () {
         console.log('deletar: ', this.model.id);
+        var self = this;
         this.model.destroy({
             success: function (_model) {
                 console.log("delete: ok!");
+                self.remove();
             },
             error: function (model, xhr, options) {
                 console.log("delete falhou!");
@@ -87,6 +89,7 @@ App.ArtigoFormView = Backbone.View.extend({
         this.model.save({}, {
             success: function (_model) {
                 console.log("create(save): ok!");
+                alert("Registro salvo com sucesso");
             },
             error: function (model, xhr, options) {
                 console.log("create(save): falhou!");
