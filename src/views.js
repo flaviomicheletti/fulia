@@ -42,11 +42,19 @@ var ArtigosTrView = Backbone.View.extend({
     abrir_form: function (evt) {
         evt.preventDefault();
         console.log('abrir-form: ', this.model.id);
+        window.location.href = "#artigo/" + this.model.id + " ";
     },
     deletar: function () {
         console.log('deletar: ', this.model.id);
+        this.model.destroy({
+            success: function (_model) {
+                console.log("delete: ok!");
+            },
+            error: function (model, xhr, options) {
+                console.log("delete falhou!");
+            }
+        });
     }
-
 });
 
 //

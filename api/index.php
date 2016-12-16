@@ -94,8 +94,7 @@ $app->put('/artigo/{id:\d+}', function (ServerRequestInterface $request, Respons
 #
 $app->delete('/artigo/{id:\d+}', function (ServerRequestInterface $request, ResponseInterface $response, $args) {
     $artigo = new Artigo($args['id']);
-    $artigo->delete();
-    if ($artigo->update()) {
+    if ($artigo->delete()) {
         return $response->withJson(array(
             "msg" => "Artigo({$artigo->id}) deletado com sucesso!")
         );
