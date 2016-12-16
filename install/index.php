@@ -1,15 +1,21 @@
 <?php
 
-require __DIR__  . "/../api/Db.php";
+require __DIR__  . "/../api/includes/Db.php";
+
+#
+# Nome da base de dados
+#
+$base = "fulia";
 
 #
 # Criar a base
 #
 $pdo = Db::conectar();
-$pdo->query('CREATE DATABASE IF NOT EXISTS fulia;');
+$pdo->query("CREATE DATABASE IF NOT EXISTS $base;");
+$pdo->query("use $base");
 
 #
-# Cirar as tabelas
+# Criar as tabelas
 #
 $sql = file_get_contents('tabelas.sql');
 $pdo->query($sql);
@@ -19,3 +25,6 @@ $pdo->query($sql);
 #
 $sql = file_get_contents('dados.sql');
 $pdo->query($sql);
+?>
+
+<p>Instalação completa</p>
