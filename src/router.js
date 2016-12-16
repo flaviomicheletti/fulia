@@ -4,13 +4,13 @@ App.router = Backbone.Router.extend({
         'artigo/:id' : 'artigo',
     },
     listar: function () {
-        var artigos = new Artigos();
+        var artigos = new App.Artigos();
         artigos.fetch({
             success: function (collection, response) {
-                var lista = new ArtigosTableView();
+                var lista = new App.ArtigosTableView();
                 $('#content').html(lista.render());    
 
-                var trs = new ArtigosTBodyView({
+                var trs = new App.ArtigosTBodyView({
                     collection: artigos
                 });
                 console.log(trs.$el);
@@ -24,13 +24,13 @@ App.router = Backbone.Router.extend({
     },
     artigo: function (id) {
         console.log(id);
-        artigo = new Artigo({id: id});
+        artigo = new App.Artigo({id: id});
         artigo.fetch({
             success: function (_model) {
                 console.log("read(fetch): ok!");
                 //console.log(artigo.attributes);
 
-                formulario = new ArtigoFormView();
+                formulario = new App.ArtigoFormView();
                 $('#content').html(formulario.render(_model));
             },
             error: function (model, xhr, options) {

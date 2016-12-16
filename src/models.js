@@ -1,7 +1,7 @@
 //
 // Model
 //
-window.Artigo = Backbone.Model.extend({
+App.Artigo = Backbone.Model.extend({
     urlRoot: '../api/artigo',
     sync: function (method, model, options) {
         // console.log(method + "(sync): ", model.attributes);
@@ -24,8 +24,8 @@ window.Artigo = Backbone.Model.extend({
 //
 // Collections
 //
-window.Artigos = Backbone.Collection.extend({
-    model: Artigo,
+App.Artigos = Backbone.Collection.extend({
+    model: App.Artigo,
     url: '../api/artigos/',
-    query: new Artigo()
+    query: new App.Artigo()
 });

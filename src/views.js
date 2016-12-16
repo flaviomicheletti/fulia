@@ -1,7 +1,7 @@
 //
 // Lista de artigos (table)
 //
-var ArtigosTableView = Backbone.View.extend({
+App.ArtigosTableView = Backbone.View.extend({
     template: _.template($('#tpl-lista-de-artigos').html()),
     render: function () {
         return this.$el.html(this.template());
@@ -11,14 +11,14 @@ var ArtigosTableView = Backbone.View.extend({
 //
 // Lista de artigos (body)
 //
-var ArtigosTBodyView = Backbone.View.extend({
+App.ArtigosTBodyView = Backbone.View.extend({
     render: function () {
         this.el=  $("#tbody");
         var artigos = this.collection.models;           // models
         var tr = {};
 
         for (var i = 0; i < artigos.length; i++) {
-            tr = new ArtigosTrView();                   // view da linha
+            tr = new App.ArtigosTrView();                   // view da linha
             $(this.el).append(tr.render(artigos[i]));
         }
         return this;
@@ -28,7 +28,7 @@ var ArtigosTBodyView = Backbone.View.extend({
 //
 // Lista de artigos (cada linha)
 //
-var ArtigosTrView = Backbone.View.extend({
+App.ArtigosTrView = Backbone.View.extend({
     tagName: 'tr',
     template: _.template($('#tpl-cada-artigo').html()),
     render: function (model) {
@@ -60,7 +60,7 @@ var ArtigosTrView = Backbone.View.extend({
 //
 // Formulário
 //
-var ArtigoFormView = Backbone.View.extend({
+App.ArtigoFormView = Backbone.View.extend({
     template: _.template($('#tpl-form').html()),
     render: function (model) {
         this.model = model;
