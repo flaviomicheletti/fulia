@@ -42,7 +42,7 @@ var ArtigosTrView = Backbone.View.extend({
     abrir_form: function (evt) {
         evt.preventDefault();
         console.log('abrir-form: ', this.model.id);
-        window.location.href = "#artigo/" + this.model.id + " ";
+        window.location.href = "#artigo/" + this.model.id;
     },
     deletar: function () {
         console.log('deletar: ', this.model.id);
@@ -83,9 +83,18 @@ var ArtigoFormView = Backbone.View.extend({
     },
     salvar: function () {
         console.log('salvar: ', this.model.id);
-        console.log(this.model.attributes);
+        //console.log(this.model.attributes);
+        this.model.save({}, {
+            success: function (_model) {
+                console.log("create(save): ok!");
+            },
+            error: function (model, xhr, options) {
+                console.log("create(save): falhou!");
+            }
+        });        
     },
     cancelar: function () {
         console.log('cancelar: ', this.model.id);
+        window.location.href = "#";
     }
 });
