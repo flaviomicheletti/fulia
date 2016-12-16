@@ -1,4 +1,4 @@
 var App = {
     router: {},
-    workspace: {}
+    workspace: {},
 };

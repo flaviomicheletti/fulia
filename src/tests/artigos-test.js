@@ -7,7 +7,7 @@ QUnit.test("crud", function (assert) {
     //
     // create
     //
-    var artigo = new Artigo({
+    var artigo = new App.Artigo({
         _url:           'foo/',
         titulo:         'Foo',
         resumo:         'Apenas um foo',
@@ -19,6 +19,7 @@ QUnit.test("crud", function (assert) {
         dt_criacao:     '2013-04-10',
         ordem:           9
     });
+    artigo.urlRoot = "../../api/artigo";
     artigo.save({}, {
         success: function (_model) {
             console.log("create(save): ok!");
@@ -74,7 +75,8 @@ QUnit.test("crud", function (assert) {
     assert.ok(true);
 });
 QUnit.test("collection", function (assert) {
-    var artigos = new Artigos();
+    var artigos = new App.Artigos();
+    artigos.url = "../../api/artigos/";
     // artigos.fetch({data: artigos.query.attributes}, {
     artigos.fetch({
         success: function (collection, response) {
