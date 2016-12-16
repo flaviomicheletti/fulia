@@ -11,7 +11,8 @@ $base = "fulia";
 # Criar a base
 #
 $pdo = Db::conectar();
-$pdo->query("CREATE DATABASE IF NOT EXISTS $base;");
+$pdo->query("DROP DATABASE  $base;");
+$pdo->query("CREATE DATABASE  $base;");
 $pdo->query("use $base");
 
 #
