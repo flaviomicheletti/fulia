@@ -1,7 +1,8 @@
+QUnit.module("artigo");
+
 //
 // Artigo Crud
 //
-QUnit.module("artigo");
 QUnit.test("crud", function (assert) {
 
     //
@@ -74,10 +75,16 @@ QUnit.test("crud", function (assert) {
 
     assert.ok(true);
 });
+
+
+//
+// Artigo Collection
+//
 QUnit.test("collection", function (assert) {
     var artigos = new App.Artigos();
     artigos.url = "../../api/artigos/";
-    // artigos.fetch({data: artigos.query.attributes}, {
+    // artigos.fetch({
+    //    data: artigos.query.attributes,
     artigos.fetch({
         success: function (collection, response) {
             console.log('OK');
