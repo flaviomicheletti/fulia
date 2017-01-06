@@ -19,33 +19,20 @@ A segunda tela é um formulário web (hooooooo!!!)...
 
 ## Instalação
 
-1. Tenha o PHP e o MySql instalados
+1. Tenha o PHP e o MySql instalados.
 
 2. Clone o projeto `git clone https://github.com/flaviomicheletti/fulia`.
 
-3. Crie a base de dados executando os script's abaixo.
+3. Crie a base de dados executando o script `/install/index.php`.
 
-    /dados/criar-db.php
-    /dados/criar-tabelas.php
-    /dados/criar-dados.php
+    http://localhost/fulia/install/
 
 
 
 ## Testes
 
-Execute os testes do backend
-
-    cd /fulia/backend
-    phpunit tests/
-
-Execute os testes do frontend
-
 1. abra o seu navegador
-2. abra a URL `localhost/fulia/frontend/tests/`
-
-Sendo que `localhost` aponta para a pasta onde você "clonou" o projeto.
-
-Aconselho a executar `dados/trucate-posts.sql` antes de iniciar os testes.
+2. abra a URL `http://localhost/fulia/src/tests/`
 
 
 

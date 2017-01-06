@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <title>Fulia</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css">
+
+        <style type="text/css">
+            .input-tamanho-padrao {
+                width:97%;
+            }
+            .centralizar-texto {
+                text-align: center;
+            }
+            label {
+                background-color: #EEEEEE;
+                border-radius: 5px 5px 5px 5px;
+                line-height: 30px;
+            }
+            .form-horizontal .control-label {
+                padding-top: 0px;
+                text-align: center;
+                font-weight: 900;
+            }
+            .btn-fulia {
+                width: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="hero-unit">
+            <div class="container">
+                <h1>(Furia e )Fulia</h1>
+                <p>Projeto experimental em JavaScript</p>
+                <p>
+                    <a class="btn btn-primary btn-lg"
+                       href="https://github.com/flaviomicheletti/fulia" role="button" target="_blanck">GitHub</a>
+                    <a class="btn btn-primary btn-lg" href="tests/" role="button" target="_blanck">Tests</a>
+                    <a class="btn btn-primary btn-lg" href="../install/" role="button" target="_blanck">Install</a>
+                </p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div id='content'></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Template da lista de artigos -->
+        <script type="text/template" id="tpl-lista-de-artigos">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>título</th>
+                        <th>autor</th>
+                        <th>secao</th>
+                        <th>data atualização</th>
+                        <th>deletar</th>
+                    </tr>
+                </thead>
+
+                <!-- aqui entra a lista de artigos -->
+                <tbody id="tbody"></tbody>
+
+            </table>
+        </script>
+
+        <!-- Template de cada linha da lista de artigos -->
+        <script type="text/template" id="tpl-cada-artigo">
+            <td><%= id %></td>
+            <td><a href="#"><%= titulo %></a></td>
+            <td><%= autor %></td>
+            <td><%= secao %></td>
+            <td><%= dt_atualizacao %></td>
+            <td><button type="button" class="btn btn-danger btn-mini">Excluir</button></td>
+        </script>
+
+        <!-- Template do formulário -->
+        <script type="text/template" id="tpl-form">
+        <form class="form-horizontal inverse">
+            <div class="control-group">
+                <label class="control-label" for="frm-titulo">Título</label>
+                <div class="controls">
+                    <input name="titulo" class="input-tamanho-padrao" value="<%= titulo %>" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="resumo">Resumo</label>
+                <div class="controls">
+                    <textarea rows="6" name="resumo" class="input-tamanho-padrao">PHP é uma linguagem de programação para uso geral. Inicialmente, projetada por Rasmus Lerdorf na década de 1990, tinha como objetivo principal contar as visitas que eram realizadas em seu currículo on-line. Atualmente (2012) é utilizada, principalmente para construir aplicações web. Entende-se por aplicbase-dadosações web (às vezes abreviado para “webapp” ou simplesmente “app´s”) programas ou softwares escritos para rodarem na plataforma web, no modelo cliente/servidor...</textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="keywords">Keywords</label>
+                <div class="controls">
+                    <textarea rows="3" name="keywords" class="input-tamanho-padrao">o que é php; definição de php;</textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="nivel">Nível</label>
+                <div class="controls">
+                    <select name="nivel" id='nivel'>
+                        <option value=""></option>
+                        <%
+                        var options = {
+                            'basico':        'Básico',
+                            'intermediario': 'Intermediário',
+                            'avancado':      'Avançado',
+                        }
+                        _.forEach(options, function (label, chave) {
+                            window.selected = (nivel == chave) ? 'selected="selected"' : null;
+                            print("<option " + selected + " value='" + chave + "'>" + label + "</option>");
+                        });
+                        %>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="secao">Seção</label>
+                <div class="controls">
+                    <select name="secao">
+                        <option value=""></option>
+                        <%
+                        var options = {
+                            'php':      'PHP',
+                            'js':       'JS',
+                            'html-css': 'HTML &amp; CSS',
+                        }
+                        _.forEach(options, function (label, chave) {
+                            window.selected = (secao == chave ) ? 'selected="selected"' : null;
+                            print("<option " + selected + " value='" + chave + "'>" + label + "</option>");
+                        });
+                        %>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="autor">Autor</label>
+                <div class="controls">
+                    <select name="autor" id='autor'>
+                        <option value=""></option>
+                        <%
+                        var options = {
+                            'flavio':     'Flávio',
+                            'alexandre':  'Alexandre',
+                            'micheletti': 'Micheletti',
+                        }
+                        _.forEach(options, function (label, chave) {
+                            window.selected = (autor == chave ) ? 'selected="selected"' : null;
+                            print("<option " + selected + " value='" + chave + "'>" + label + "</option>");
+                        });
+                        %>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="dt_criacao">Data de criação</label>
+                <div class="controls">
+                    <input name="dt_criacao" class="span2 centralizar-texto" value="2012-06-05" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="dt_atualizacao">Data de atualização</label>
+                <div class="controls">
+                    <input name="dt_atualizacao" class="span2 centralizar-texto" value="2012-09-11" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="ordem">Ordem</label>
+                <div class="controls">
+                    <input name="ordem" class="span1 centralizar-texto" value="1" type="text">
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls pull-right">
+                    <button type="button" id="btn-cancelar" class="btn-fulia btn">Cancelar</button>
+                    <button type="button" id="btn-salvar" class="btn-fulia btn btn-info">Salvar</button>
+                </div>
+            </div>
+        </form>
+        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone.js"></script>
+        <script src="app.js"></script>
+        <script src="models.js"></script>
+        <script src="views.js"></script>
+        <script src="router.js"></script>
+        <script type="text/javascript">
+            App.workspace = new App.router();
+            Backbone.history.start();
+        </script>
+
+    </body>
+</html>

@@ -13,8 +13,15 @@
         $this->dbh = Db::getConexao();
     }
 
+    function all() {
+        $query = "SELECT * FROM artigos";
+        $sth   = $this->dbh->query($query);
+        return $sth->fetchAll(PDO::FETCH_OBJ);
+    }
+
     function create() {
-        $sql = "INSERT INTO " . $this->_table_name . " (id, url, titulo, resumo, keywords, nivel, secao, autor, dt_atualizacao, dt_criacao, ordem) "
+        $sql = "INSERT INTO " . $this->_table_name
+             . " (id, url, titulo, resumo, keywords, nivel, secao, autor, dt_atualizacao, dt_criacao, ordem) "
              . "VALUES (:_id, :_url, :_titulo, :_resumo, :_keywords, :_nivel, :_secao, :_autor, :_dt_atualizacao, :_dt_criacao, :_ordem)";
         $sth = $this->dbh->prepare($sql);
         $sth->bindParam(":_id",             $this->id);
@@ -45,7 +52,7 @@
             throw new Exception("resultado de artigo->read(" . $this->id . ") he igual a 'null'", 1);
         }
 
-        $this->url            = $_obj->url;
+        $this->_url           = $_obj->url;
         $this->titulo         = $_obj->titulo;
         $this->resumo         = $_obj->resumo;
         $this->keywords       = $_obj->keywords;
