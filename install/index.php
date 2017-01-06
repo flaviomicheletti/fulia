@@ -28,4 +28,4 @@ $sql = file_get_contents('dados.sql');
 $pdo->query($sql);
 ?>
 
-<p>Instalação completa</p>
+<p>Instalação concluída com sucesso!</p>
