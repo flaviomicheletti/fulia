@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Fulia</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css">
-        
+
         <style type="text/css">
             .input-tamanho-padrao {
                 width:97%;
@@ -25,7 +25,7 @@
             .btn-fulia {
                 width: 100px;
             }
-        </style>        
+        </style>
     </head>
     <body>
         <div class="hero-unit">
@@ -33,19 +33,19 @@
                 <h1>(Furia e )Fulia</h1>
                 <p>Projeto experimental em JavaScript</p>
                 <p>
-                    <a class="btn btn-primary btn-lg" 
+                    <a class="btn btn-primary btn-lg"
                        href="https://github.com/flaviomicheletti/fulia" role="button" target="_blanck">GitHub</a>
                     <a class="btn btn-primary btn-lg" href="tests/" role="button" target="_blanck">Tests</a>
                     <a class="btn btn-primary btn-lg" href="../install/" role="button" target="_blanck">Install</a>
                 </p>
             </div>
-        </div> 
-        
+        </div>
+
         <div class="container">
             <div class="row">
                 <div class="span12">
                     <div id='content'></div>
-                </div>   
+                </div>
             </div>
         </div>
 
@@ -59,8 +59,8 @@
                         <th>autor</th>
                         <th>secao</th>
                         <th>data atualização</th>
-                        <th>deletar</th>    
-                    </tr>                    
+                        <th>deletar</th>
+                    </tr>
                 </thead>
 
                 <!-- aqui entra a lista de artigos -->
@@ -68,7 +68,7 @@
 
             </table>
         </script>
-        
+
         <!-- Template de cada linha da lista de artigos -->
         <script type="text/template" id="tpl-cada-artigo">
             <td><%= id %></td>
@@ -78,7 +78,7 @@
             <td><%= dt_atualizacao %></td>
             <td><button type="button" class="btn btn-danger btn-mini">Excluir</button></td>
         </script>
-        
+
         <!-- Template do formulário -->
         <script type="text/template" id="tpl-form">
         <form class="form-horizontal inverse">
@@ -112,7 +112,7 @@
                             'avancado':      'Avançado',
                         }
                         _.forEach(options, function (label, chave) {
-                            window.selected = (nivel == chave ) ? 'selected="selected"' : null;
+                            window.selected = (nivel == chave) ? 'selected="selected"' : null;
                             print("<option " + selected + " value='" + chave + "'>" + label + "</option>");
                         });
                         %>
@@ -182,7 +182,7 @@
                 </div>
             </div>
         </form>
-        </script>        
+        </script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
