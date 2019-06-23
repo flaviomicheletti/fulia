@@ -1,31 +1,18 @@
 <?php
 
-require __DIR__  . "/../api/includes/Db.php";
+ini_set('display_errors', 'on');
+ini_set('track_errors', 'on');
+ini_set('html_errors', 'on');
+ini_set('error_reporting', E_ALL);
+error_reporting(E_ALL);
 
-#
-# Nome da base de dados
-#
-$base = "fulia";
+$ambiente = "dial";
 
-#
-# Criar a base
-#
-$pdo = Db::conectar();
-$pdo->query("DROP DATABASE  $base;");
-$pdo->query("CREATE DATABASE  $base;");
-$pdo->query("use $base");
-
-#
-# Criar as tabelas
-#
-$sql = file_get_contents('tabelas.sql');
-$pdo->query($sql);
-
-#
-# Inserir dados (para teste)
-#
-$sql = file_get_contents('dados.sql');
-$pdo->query($sql);
-?>
-
-<p>Instalação concluída com sucesso!</p>
+switch ($ambiente) {
+    case "local":
+        require  "index-local.php";
+        break;
+    case "dial":
+        require "index-dial.php";
+        break;
+}
