@@ -72,7 +72,7 @@ $app->put('/artigo/{id:\d+}', function (ServerRequestInterface $request, Respons
     $parsedBody = (object)$request->getParsedBody();
     $artigo = new Artigo();
     $artigo->id             = $parsedBody->id;
-    $artigo->_url           = $parsedBody->_url;
+    $artigo->url            = $parsedBody->_url;
     $artigo->titulo         = $parsedBody->titulo;
     $artigo->resumo         = $parsedBody->resumo;
     $artigo->keywords       = $parsedBody->keywords;
