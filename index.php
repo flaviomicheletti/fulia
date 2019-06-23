@@ -1,3 +1,3 @@
 <?php
 
-header("Location: src/");
+header("Location: v1.0/home/");
